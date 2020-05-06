@@ -1,6 +1,7 @@
 import { apiRequest } from 'platform/utilities/api';
 import recordEvent from 'platform/monitoring/record-event';
-import { GA_PREFIX, watchForButtonClicks } from './utils';
+import { GA_PREFIX, addEventListenerToButtons } from './utils';
+import * as Sentry from '@sentry/browser';
 
 const defaultLocale = 'en-US';
 const localeRegExPattern = /^[a-z]{2}(-[A-Z]{2})?$/;
@@ -129,7 +130,8 @@ const requestChatBot = loc => {
   }
   return apiRequest(path, { method: 'POST' })
     .then(({ token }) => initBotConversation(token))
-    .catch(() => {
+    .catch(error => {
+      Sentry.captureException(error);
       recordEvent({
         event: `${GA_PREFIX}-connection-failure`,
         'error-key': 'XX_failed_to_init_bot_convo',
@@ -147,6 +149,6 @@ const chatRequested = scenario => {
 };
 
 export default function initializeChatbot() {
-  watchForButtonClicks();
+  addEventListenerToButtons();
   return chatRequested('va_coronavirus_chatbot');
 }
