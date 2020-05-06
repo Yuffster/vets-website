@@ -1,15 +1,14 @@
 import './sass/profile-360.scss';
 import 'platform/polyfills';
-
+import React from 'react';
+import ProfileWrapperTest from 'applications/personalization/profile/ProfileWrapperTest';
 import startApp from 'platform/startup';
-
-import routes from './routes';
-import reducer from './reducers';
 import manifest from './manifest.json';
+import reducer from './reducers';
 
 startApp({
-  url: manifest.rootUrl,
-  reducer,
-  routes,
+  component: <ProfileWrapperTest />,
   entryName: manifest.entryName,
+  reducer,
+  url: manifest.rootUrl,
 });
