@@ -52,7 +52,7 @@ const routes = {
   path: '/profile',
   component: ProfileWrapper,
   indexRoute: {
-    onEnter: (nextState, replace) => {
+    onEnter: replace => {
       replace(personalInformation.path);
     },
   },

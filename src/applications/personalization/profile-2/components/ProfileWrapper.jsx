@@ -61,10 +61,12 @@ class ProfileWrapper extends Component {
     </div>
   );
 
+  // Update logic here to account for new routing
   createBreadCrumbAttributes = () => {
     const { location, route } = this.props;
-    const activeLocation = location?.pathname.replace('/', '');
+    const activeLocation = location?.pathname;
     const childRoutes = route?.childRoutes;
+
     const activeRoute = childRoutes.find(
       childRoute => childRoute.path === activeLocation,
     );
