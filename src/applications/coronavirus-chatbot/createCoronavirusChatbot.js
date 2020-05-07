@@ -1,6 +1,5 @@
 import recordEvent from 'platform/monitoring/record-event';
 import { GA_PREFIX } from './utils';
-import ReactWebChat, { createDirectLine } from 'botframework-webchat';
 import * as Sentry from '@sentry/browser';
 
 export default (_store, widgetType) => {
@@ -16,7 +15,6 @@ export default (_store, widgetType) => {
     const initializeChatbot = module.default;
     try {
       const webchatOptions = await initializeChatbot();
-      debugger;
       recordEvent({
         event: `${GA_PREFIX}-connection-successful`,
         'error-key': undefined,

@@ -3,11 +3,11 @@ import recordEvent from 'platform/monitoring/record-event';
 import { GA_PREFIX, addEventListenerToButtons } from './utils';
 import * as Sentry from '@sentry/browser';
 
-const defaultLocale = 'en-US';
+export const defaultLocale = 'en-US';
 const localeRegExPattern = /^[a-z]{2}(-[A-Z]{2})?$/;
 let chatBotScenario = 'unknown';
 
-const extractLocale = localeParam => {
+export const extractLocale = localeParam => {
   if (localeParam === 'autodetect') {
     return navigator.language;
   }
@@ -19,7 +19,7 @@ const extractLocale = localeParam => {
   return defaultLocale;
 };
 
-const getUserLocation = callback => {
+export const getUserLocation = callback => {
   navigator.geolocation.getCurrentPosition(
     position => {
       const latitude = position.coords.latitude;
@@ -42,6 +42,7 @@ const initBotConversation = jsonWebToken => {
   const tokenPayload = JSON.parse(atob(jsonWebToken.split('.')[1]));
   const user = {
     id: tokenPayload.userId,
+    name: tokenPayload.userName,
     locale: tokenPayload.locale,
   };
   let domain = undefined;
@@ -108,11 +109,12 @@ const initBotConversation = jsonWebToken => {
     styleOptions,
     store: webchatStore,
     userID: user.id,
+    username: user.name,
     locale: user.locale,
   };
 };
 
-const requestChatBot = loc => {
+export const requestChatBot = loc => {
   const params = new URLSearchParams(location.search);
   const locale = params.has('locale')
     ? extractLocale(params.get('locale'))
