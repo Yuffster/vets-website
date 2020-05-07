@@ -7,7 +7,6 @@ import ProfileOneWrapper from 'applications/personalization/profile360/container
 
 const ProfileWrapperTest = ({ showProfile2 }) => {
   if (showProfile2) {
-    console.log('Should show profile 2', routes);
     return <Router history={browserHistory}>{routes}</Router>;
   }
 

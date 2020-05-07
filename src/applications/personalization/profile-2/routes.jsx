@@ -6,35 +6,35 @@ import AccountSecurity from './components/AccountSecurity';
 import ConnectedApplications from './components/ConnectedApplications';
 
 const personalInformation = {
-  path: 'personal-information',
+  path: '/profile/personal-information',
   component: PersonalInformation,
   key: 'personal-information',
   name: 'Personal and contact information',
 };
 
 const militaryInformation = {
-  path: 'military-information',
+  path: '/profile/military-information',
   component: MilitaryInformation,
   key: 'military-information',
   name: 'Military information',
 };
 
 const directDeposit = {
-  path: 'direct-deposit',
+  path: '/profile/direct-deposit',
   component: DirectDeposit,
   key: 'direct-deposit',
   name: 'Direct deposit information',
 };
 
 const accountSecurity = {
-  path: 'account-security',
+  path: '/profile/account-security',
   component: AccountSecurity,
   key: 'account-security',
   name: 'Account security',
 };
 
 const connectedApplications = {
-  path: 'connected-applications',
+  path: '/profile/connected-applications',
   component: ConnectedApplications,
   key: 'connected-applications',
   name: 'Connected apps',
@@ -49,7 +49,7 @@ export const childRoutes = {
 };
 
 const routes = {
-  path: '/',
+  path: '/profile',
   component: ProfileWrapper,
   indexRoute: {
     onEnter: (nextState, replace) => {
