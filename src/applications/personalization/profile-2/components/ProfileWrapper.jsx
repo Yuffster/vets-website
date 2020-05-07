@@ -92,7 +92,7 @@ class ProfileWrapper extends Component {
         {/* Breadcrumbs */}
         <Breadcrumbs className="vads-u-padding-x--1 vads-u-padding-y--1p5 medium-screen:vads-u-padding-y--0">
           <a href="/">Home</a>
-          {!onPersonalInformationMobile && <a href="/profile-2/">Profile</a>}
+          {!onPersonalInformationMobile && <a href="/profile">Profile</a>}
           <a href={activeLocation}>{activeRouteName}</a>
         </Breadcrumbs>
 
