@@ -3,6 +3,13 @@ import vet360 from 'vet360/reducers';
 import { hcaEnrollmentStatus } from 'applications/hca/reducer';
 
 import {
+  OPEN_SIDE_NAV,
+  CLOSE_SIDE_NAV,
+  PIN_MENU_TRIGGER,
+  UNPIN_MENU_TRIGGER,
+} from 'applications/personalization/profile-2/actions';
+
+import {
   FETCH_HERO_SUCCESS,
   FETCH_PERSONAL_INFORMATION_SUCCESS,
   FETCH_MILITARY_INFORMATION_SUCCESS,
@@ -18,6 +25,9 @@ import {
 } from '../actions/paymentInformation';
 
 const initialState = {
+  isSideNavOpen: false,
+  isMenuTriggerPinned: false,
+  focusTriggerButton: false,
   hero: null,
   personalInformation: null,
   militaryInformation: null,
@@ -76,6 +86,22 @@ function vaProfile(state = initialState, action) {
         newState,
       );
     }
+
+    case OPEN_SIDE_NAV:
+      return { ...state, isSideNavOpen: true, focusTriggerButton: false };
+
+    case CLOSE_SIDE_NAV:
+      return {
+        ...state,
+        isSideNavOpen: false,
+        focusTriggerButton: action.focusTriggerButton,
+      };
+
+    case PIN_MENU_TRIGGER:
+      return { ...state, isMenuTriggerPinned: true };
+
+    case UNPIN_MENU_TRIGGER:
+      return { ...state, isMenuTriggerPinned: false };
 
     default:
       return state;
