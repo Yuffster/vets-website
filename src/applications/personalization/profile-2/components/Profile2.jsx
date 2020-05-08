@@ -23,7 +23,7 @@ import ProfileHeader from './ProfileHeader';
 import ProfileSideNav from './ProfileSideNav';
 import MobileMenuTrigger from './MobileMenuTrigger';
 
-class ProfileWrapper extends Component {
+class Profile2 extends Component {
   componentDidMount() {
     const {
       fetchFullName,
@@ -186,9 +186,9 @@ const mapDispatchToProps = {
   fetchPaymentInformation: fetchPaymentInformationAction,
 };
 
-export { ProfileWrapper, mapStateToProps };
+export { Profile2, mapStateToProps };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ProfileWrapper);
+)(Profile2);

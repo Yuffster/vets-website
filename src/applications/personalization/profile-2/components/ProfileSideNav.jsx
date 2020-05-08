@@ -10,12 +10,13 @@ import {
   getTabbableElements,
 } from 'platform/utilities/accessibility';
 
-import { childRoutes } from '../routes';
+import { childRoutes as LOA1ChildRoutes } from '../LOA1Routes';
+import { childRoutes as LOA3ChildRoutes } from '../LOA3Routes';
 
 import { closeSideNav as closeSideNavAction } from '../actions';
 import { selectIsSideNavOpen } from '../selectors';
 
-const ProfileSideNav = ({ closeSideNav, isSideNavOpen }) => {
+const ProfileSideNav = ({ closeSideNav, isSideNavOpen, isLOA1, isLOA3 }) => {
   const closeButton = useRef(null);
   const lastMenuItem = useRef(null);
 
@@ -69,6 +70,8 @@ const ProfileSideNav = ({ closeSideNav, isSideNavOpen }) => {
     'va-sidebarnav--opened': isSideNavOpen,
   });
 
+  const childRoutes = isLOA1 ? LOA1ChildRoutes : LOA3ChildRoutes;
+
   return (
     <nav
       className={sideNavClasses}
@@ -107,6 +110,8 @@ const ProfileSideNav = ({ closeSideNav, isSideNavOpen }) => {
 };
 
 const mapStateToProps = state => ({
+  isLOA1: isLOA1(state),
+  isLOA3: isLOA3(state),
   isSideNavOpen: selectIsSideNavOpen(state),
 });
 

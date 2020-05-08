@@ -17,6 +17,7 @@ import RequiredLoginView from 'platform/user/authorization/components/RequiredLo
 import ProfileView from '../components/ProfileView';
 
 function VAProfileApp(props) {
+  console.log("Props in VAProfileApp", props)
   return (
     <div>
       <RequiredLoginView

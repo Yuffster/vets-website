@@ -7,11 +7,11 @@ import backendServices from 'platform/user/profile/constants/backendServices';
 import RequiredLoginView from 'platform/user/authorization/components/RequiredLoginView';
 
 import {
-  ProfileWrapper,
+  Profile2,
   mapStateToProps,
-} from '../../components/ProfileWrapper';
+} from '../../components/Profile2';
 
-describe('ProfileWrapper', () => {
+describe('Profile2', () => {
   let defaultProps;
   let fetchFullNameSpy;
   let fetchMilitaryInfoSpy;
@@ -51,7 +51,7 @@ describe('ProfileWrapper', () => {
   });
 
   it('renders a RequiredLoginView component that requires the USER_PROFILE', () => {
-    const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+    const wrapper = shallow(<Profile2 {...defaultProps} />);
     expect(wrapper.type()).to.equal(RequiredLoginView);
     expect(wrapper.prop('serviceRequired')).to.equal(
       backendServices.USER_PROFILE,
@@ -61,7 +61,7 @@ describe('ProfileWrapper', () => {
 
   it('should render a spinner if it is loading data', () => {
     defaultProps.showLoader = true;
-    const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+    const wrapper = shallow(<Profile2 {...defaultProps} />);
     wrapper.setProps({ showLoader: true });
     const loader = wrapper.find('LoadingIndicator');
     expect(loader.length).to.equal(1);
@@ -70,37 +70,37 @@ describe('ProfileWrapper', () => {
 
   describe('when the component mounts', () => {
     it('should fetch the military information data', () => {
-      const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+      const wrapper = shallow(<Profile2 {...defaultProps} />);
       expect(fetchMilitaryInfoSpy.called).to.be.true;
       wrapper.unmount();
     });
 
     it('should fetch the full name data', () => {
-      const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+      const wrapper = shallow(<Profile2 {...defaultProps} />);
       expect(fetchFullNameSpy.called).to.be.true;
       wrapper.unmount();
     });
 
     it('should fetch the personal information data', () => {
-      const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+      const wrapper = shallow(<Profile2 {...defaultProps} />);
       expect(fetchPersonalInfoSpy.called).to.be.true;
       wrapper.unmount();
     });
 
     it('should fetch the My HealtheVet data', () => {
-      const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+      const wrapper = shallow(<Profile2 {...defaultProps} />);
       expect(fetchMHVAccountSpy.called).to.be.true;
       wrapper.unmount();
     });
 
     it('should render BreadCrumbs', () => {
-      const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+      const wrapper = shallow(<Profile2 {...defaultProps} />);
       expect(wrapper.find('Breadcrumbs')).to.have.lengthOf(1);
       wrapper.unmount();
     });
 
     it('should render the correct breadcrumb (Personal and contact Information)', () => {
-      const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+      const wrapper = shallow(<Profile2 {...defaultProps} />);
       const BreadCrumbs = wrapper.find('Breadcrumbs');
       const activeRouteText = BreadCrumbs.find('a')
         .last()
@@ -114,7 +114,7 @@ describe('ProfileWrapper', () => {
 
     describe('when `shouldFetchDirectDepositInformation` is `true`', () => {
       it('should fetch the payment information data', () => {
-        const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+        const wrapper = shallow(<Profile2 {...defaultProps} />);
         expect(fetchPaymentInfoSpy.called).to.be.true;
         wrapper.unmount();
       });
@@ -123,7 +123,7 @@ describe('ProfileWrapper', () => {
     describe('when `shouldFetchDirectDepositInformation` is `false`', () => {
       it('should not fetch the payment information data', () => {
         defaultProps.shouldFetchDirectDepositInformation = false;
-        const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+        const wrapper = shallow(<Profile2 {...defaultProps} />);
         expect(fetchPaymentInfoSpy.called).to.be.false;
         wrapper.unmount();
       });
@@ -134,7 +134,7 @@ describe('ProfileWrapper', () => {
     describe('when `shouldFetchDirectDepositInformation` goes from `false` to `true', () => {
       it('should fetch the payment information data', () => {
         defaultProps.shouldFetchDirectDepositInformation = false;
-        const wrapper = shallow(<ProfileWrapper {...defaultProps} />);
+        const wrapper = shallow(<Profile2 {...defaultProps} />);
         expect(fetchPaymentInfoSpy.called).to.be.false;
         wrapper.setProps({ shouldFetchDirectDepositInformation: true });
         expect(fetchPaymentInfoSpy.called).to.be.true;
