@@ -1,4 +1,4 @@
-import Profile2Wrapper from './components/Profile2Wrapper';
+import Profile2 from './components/Profile2Wrapper';
 import PersonalInformation from './components/PersonalInformation';
 import AccountSecurity from './components/AccountSecurity';
 
@@ -25,7 +25,7 @@ const routes = {
   path: '/profile',
   component: Profile2,
   indexRoute: {
-    onEnter: replace => {
+    onEnter: (nextState, replace) => {
       replace(personalInformation.path);
     },
   },

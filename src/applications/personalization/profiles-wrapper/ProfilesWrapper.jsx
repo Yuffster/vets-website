@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { selectShowProfile2 } from 'applications/personalization/profile-2/selectors';
 import ProfileOneWrapper from 'applications/personalization/profile360/containers/VAProfileApp';
-import ProfileTwoWrapper from 'applications/personalization/profile-2/components/Profile2Wrapper'
 import environment from 'platform/utilities/environment';
 import { isLOA1, isLOA3 } from 'platform/user/selectors';
 import FEATURE_FLAG_NAMES from 'platform/utilities/feature-toggles/featureFlagNames';
@@ -12,10 +11,12 @@ import LOA1Routes from 'applications/personalization/profile-2/LOA1Routes';
 
 const ProfilesWrapper = ({ showProfile2, isLOA1, isLOA3 }) => {
   if (showProfile2 && isLOA1) {
+    console.log("LOA1")
     return <Router history={browserHistory}>{LOA1Routes}</Router>
   }
 
   if (showProfile2 && isLOA3) {
+    console.log("LOA3")
     return <Router history={browserHistory}>{LOA3Routes}</Router>
   }
 
