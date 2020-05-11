@@ -1,4 +1,4 @@
-import Profile2 from './components/Profile2';
+import Profile2Wrapper from './components/Profile2Wrapper';
 import PersonalInformation from './components/PersonalInformation';
 import MilitaryInformation from './components/MilitaryInformation';
 import DirectDeposit from './components/DirectDeposit';
@@ -51,11 +51,11 @@ export const childRoutes = {
 const routes = {
   path: '/profile',
   component: Profile2,
-  // indexRoute: {
-  //   onEnter: replace => {
-  //     replace(personalInformation.path);
-  //   },
-  // },
+  indexRoute: {
+    onEnter: replace => {
+      replace(personalInformation.path);
+    },
+  },
   childRoutes: Object.values(childRoutes),
 };
 

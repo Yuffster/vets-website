@@ -10,6 +10,8 @@ import {
   getTabbableElements,
 } from 'platform/utilities/accessibility';
 
+import { isLOA1, isLOA3 } from 'platform/user/selectors';
+
 import { childRoutes as LOA1ChildRoutes } from '../LOA1Routes';
 import { childRoutes as LOA3ChildRoutes } from '../LOA3Routes';
 

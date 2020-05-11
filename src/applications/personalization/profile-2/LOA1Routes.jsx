@@ -1,5 +1,6 @@
-import Profile2 from './components/Profile2';
+import Profile2Wrapper from './components/Profile2Wrapper';
 import PersonalInformation from './components/PersonalInformation';
+import AccountSecurity from './components/AccountSecurity';
 
 const personalInformation = {
   path: '/profile/personal-information',
@@ -8,8 +9,16 @@ const personalInformation = {
   name: 'Personal and contact information',
 };
 
+const accountSecurity = {
+  path: '/profile/account-security',
+  component: AccountSecurity,
+  key: 'account-security',
+  name: 'Account security',
+};
+
 export const childRoutes = {
   personalInformation,
+  accountSecurity,
 };
 
 const routes = {
