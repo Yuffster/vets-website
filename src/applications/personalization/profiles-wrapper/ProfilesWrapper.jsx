@@ -11,13 +11,11 @@ import LOA1Routes from 'applications/personalization/profile-2/LOA1Routes';
 
 const ProfilesWrapper = ({ showProfile2, isLOA1, isLOA3 }) => {
   if (showProfile2 && isLOA1) {
-    console.log("LOA1")
-    return <Router history={browserHistory}>{LOA1Routes}</Router>
+    return <Router history={browserHistory} routes={LOA1Routes} />
   }
 
   if (showProfile2 && isLOA3) {
-    console.log("LOA3")
-    return <Router history={browserHistory}>{LOA3Routes}</Router>
+    return <Router history={browserHistory} routes={LOA3Routes} />
   }
 
   return <ProfileOneWrapper />

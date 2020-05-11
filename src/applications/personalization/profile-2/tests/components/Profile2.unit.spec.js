@@ -9,7 +9,7 @@ import RequiredLoginView from 'platform/user/authorization/components/RequiredLo
 import {
   Profile2,
   mapStateToProps,
-} from '../../components/Profile2';
+} from '../../components/Profile2Wrapper';
 
 describe('Profile2', () => {
   let defaultProps;
