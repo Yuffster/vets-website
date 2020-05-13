@@ -6,7 +6,6 @@ class CoronavirusChatbot extends React.Component {
   render() {
     if (this.props.config) {
       const { directLine, store, userID, styleOptions } = this.props.config;
-      debugger
       return (
         <ReactWebChat
           directLine={directLine}

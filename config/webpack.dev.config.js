@@ -12,6 +12,7 @@ function generateWebpackDevConfig(buildOptions) {
 
   // If in watch mode, assume hot reloading for JS and use webpack devserver.
   return {
+    disableHostCheck: true,
     contentBase: buildOptions.destination,
     historyApiFallback: {
       rewrites: [

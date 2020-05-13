@@ -4,6 +4,7 @@ import * as Sentry from '@sentry/browser';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ChatbotLoadError from './components/ChatbotLoadError';
+import CoronavirusChatbot from './components/CoronavirusChatbot';
 
 export default (_store, widgetType) => {
   // Derive the element to render our widget.
@@ -26,7 +27,9 @@ export default (_store, widgetType) => {
         event: `${GA_PREFIX}-load-successful`,
         'error-key': undefined,
       });
-      window.WebChat.renderWebChat(webchatOptions, root);
+      //debugger
+      //window.WebChat.renderWebChat(webchatOptions, root);
+      ReactDOM.render(<CoronavirusChatbot config={webchatOptions} />, root);
     } catch (err) {
       ReactDOM.render(<ChatbotLoadError />, root);
       Sentry.captureException(err);
